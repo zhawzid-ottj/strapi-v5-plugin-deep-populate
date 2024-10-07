@@ -14,7 +14,7 @@ export default {
         debug: false,
         // Array of models to allow populate on i.e. ['api::page.page', 'api::post.post']
         // If empty all models are allowed.
-        allowedModels: ["api::page.page"],
+        allowedModels: [],
     },
     validator(config) {
         pluginConfigSchema.validateSync(config)

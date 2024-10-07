@@ -18,21 +18,26 @@ const bootstrap = ({ strapi }) => {
     strapi.db.lifecycles.subscribe((event) => {
         if (event.action === 'beforeFindMany' || event.action === 'beforeFindOne') {
             const ctx = strapi.requestContext.get()
-            debug && console.log(ctx?.request?.query) // Debug
+            debug && console.log("strapi.requestContext.request.query", ctx?.request?.query) // Debug
 
+            // Guards
             let { deepPopulate } = event.params
             if (deepPopulate===undefined) {
               return
             }
+            const model = event.model
+            debug && console.log(allowedModels, model.uid) // Debug
+            if (!Array.isArray(allowedModels) || allowedModels.length===0) {
+                console.warn("deep populate plugin disabled - please provide at least one model in allowedModels[]");
+                return;
+            }
+            // Check if the model is allowed
+            if (!allowedModels.includes(model.uid)) {
+                return;
+            }
 
             deepPopulate = deepPopulate.split(',')
-
             if (deepPopulate && deepPopulate[0] === 'deep') {
-                const model = event.model
-                // Check if the model is allowed
-                if (allowedModels.length && !allowedModels.includes(model.uid)) {
-                    return
-                }
                 const queryParams = ctx?.request?.query || {}
                 const populateIgnoreFields = validatePopulateIgnore(queryParams.populateIgnore)
                 const populateIgnorePaths = validatePopulateIgnore(queryParams.populateIgnorePaths)
@@ -42,8 +47,6 @@ const bootstrap = ({ strapi }) => {
 
                 // Limit the depth to the default depth if it's greater than the default depth
                 const limitedDepth = Math.min(depth, maxDepth)
-
-
                 const ignoredFields = new Set()
 
                 // Add the ignored fields from the config
