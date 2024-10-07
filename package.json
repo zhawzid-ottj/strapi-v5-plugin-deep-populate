@@ -53,5 +53,6 @@
     "url": "https://github.com/zhawzid-ottj/strapi-v5-plugin-deep-populate/issues"
   },
   "homepage": "https://github.com/zhawzid-ottj/strapi-v5-plugin-deep-populate#readme",
-  "author": "zhawzid-ottj <ottjakob@gmail.com>"
+  "author": "zhawzid-ottj <ottjakob@gmail.com>",
+  "main": "dist/server/index.js"
 }

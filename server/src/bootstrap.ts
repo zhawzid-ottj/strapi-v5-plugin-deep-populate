@@ -1,6 +1,6 @@
 import pluginId from './pluginId'
 
-import { getFullPopulateObject, validatePopulateIgnore } from '../../../strapi-v5-plugin-deep-populate2/server/src/utils/utils'
+import { getFullPopulateObject, validatePopulateIgnore } from './utils/utils'
 import { PluginConfig } from './config/schema'
 
 const bootstrap = ({ strapi }) => {
