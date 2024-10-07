@@ -11,9 +11,9 @@ export default {
         ignoreFields: [],
         ignorePaths: [],
         // Debug mode
-        debug: false,
+        debug: true,
         // Array of models to allow populate on i.e. ['api::page.page', 'api::post.post']
-        // If empty all models are allowed.
+        // Please provide at least one item in allowedModels[] in your plugin config
         allowedModels: [],
     },
     validator(config) {
