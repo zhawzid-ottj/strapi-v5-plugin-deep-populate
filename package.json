@@ -26,14 +26,14 @@
     "@mobily/ts-belt": "^3.13.1"
   },
   "devDependencies": {
-    "@strapi/strapi": "^5.0.3",
+    "@strapi/strapi": "^5.0.4",
     "@strapi/sdk-plugin": "^5.2.6",
     "prettier": "^3.3.3",
-    "@strapi/typescript-utils": "^5.0.3",
+    "@strapi/typescript-utils": "^5.0.6",
     "typescript": "^5.6.2"
   },
   "peerDependencies": {
-    "@strapi/strapi": "^5.0.3",
+    "@strapi/strapi": "^5.0.6",
     "@strapi/sdk-plugin": "^5.2.6"
   },
   "strapi": {
